@@ -1,1 +1,1 @@
-# Image Information Retrivel
+# Image Information Retrieval
