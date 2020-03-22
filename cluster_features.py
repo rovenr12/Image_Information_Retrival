@@ -1,5 +1,5 @@
 from __future__ import print_function
-from pyimagesearch.ir import Vocabulary
+from toolkit.ir import Vocabulary
 import argparse
 import pickle
 

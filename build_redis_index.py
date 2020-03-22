@@ -1,5 +1,5 @@
 from __future__ import print_function
-from pyimagesearch.db import RedisQueue
+from toolkit.db import RedisQueue
 from redis import Redis
 import argparse
 import h5py

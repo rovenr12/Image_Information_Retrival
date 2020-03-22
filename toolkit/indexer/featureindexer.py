@@ -57,13 +57,7 @@ class FeatureIndexer(BaseIndexer):
         # Grab the feature vector size
         fvectorSize = self.featuresBuffer.shape[1]
 
-        # Handle h5py datatype for Python 2.7
-        if sys.version_info[0] < 3:
-            dt = h5py.special_dtype(vlen=unicode)
-
-        # Otherwise use a datatype compatible with Python 3+
-        else:
-            dt = h5py.special_dtype(vlen=str)
+        dt = h5py.special_dtype(vlen=str)
 
         # Initialize the datasets
         self._debug("Creating datasets...")

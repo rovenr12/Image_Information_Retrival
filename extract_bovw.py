@@ -1,5 +1,5 @@
-from pyimagesearch.ir import BagOfVisualWords
-from pyimagesearch.indexer import BOVWIndexer
+from toolkit.ir import BagOfVisualWords
+from toolkit.indexer import BOVWIndexer
 import argparse
 import pickle
 import h5py

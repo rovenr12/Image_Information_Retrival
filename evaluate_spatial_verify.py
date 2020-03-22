@@ -1,8 +1,8 @@
 from __future__ import print_function
-from pyimagesearch.descriptors import DetectAndDescribe
-from pyimagesearch.ir import BagOfVisualWords
-from pyimagesearch.ir import SpatialVerifier
-from pyimagesearch.ir import Searcher
+from toolkit.descriptors import DetectAndDescribe
+from toolkit.ir import BagOfVisualWords
+from toolkit.ir import SpatialVerifier
+from toolkit.ir import Searcher
 from scipy.spatial import distance
 from redis import Redis
 from imutils.feature import FeatureDetector_create, DescriptorExtractor_create
