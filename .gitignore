@@ -2,3 +2,4 @@
 BRISK_BRISK/
 *.hdf5
 *.cpickle
+toolkit/__pycache__/
