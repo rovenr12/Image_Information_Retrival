@@ -16,7 +16,7 @@ Requirement Package:
 3. h5py
 
 Requirement Software
-Redis - Execute it by redis-cli ping
+1.Redis - Execute it by redis-cli ping
 
 
 Step 1: Extracting features by 'index_features.py'.
@@ -32,5 +32,13 @@ Example: python cluster_features.py -f BRISK_BRISK/features.hdf5
 Step 3: Forming the Bag-of-Visual-Words(BOVW) by 'extract_bovw.py'
 Example:python extract_bovw.py -f BRISK_BRISK/features.hdf5
 -c BRISK_BRISK/vocab.cpickle -b BRISK_BRISK/bovw.hdf5 -d BRISK_BRISK/idf.cpickle
+
+Step 4: Building the Redis-index by 'build_redis_index.py'
+Example:python build_redis_index.py -b BRISK_BRISK/bovw.hdf5
+
+Step 5: Search by 'search.py'
+Make sure the value uses in Line 29 and 30 is the same as step 1
+python search.py -d ukbench -f BRISK_BRISK/features.hdf5 -b BRISK_BRISK/bovw.hdf5
+	-c BRISK_BRISK/vocab.cpickle -r ukbench/relevant.json -q ukbench/ukbench00258.jpg
 
 # Performance
