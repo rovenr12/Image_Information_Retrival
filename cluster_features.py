@@ -21,6 +21,7 @@ vocab = voc.fit(args["clusters"], args["percentage"])
 
 # Dump the clusters to file
 print("[INFO] storing cluster centers...")
+
 f = open(args["codebook"], "wb")
 f.write(pickle.dumps(vocab))
 f.close()

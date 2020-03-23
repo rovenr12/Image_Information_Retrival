@@ -6,7 +6,9 @@ from imutils import paths
 import argparse
 import imutils
 import cv2
+import time
 
+start = time.time()
 # Construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--dataset", required=True,
@@ -20,8 +22,8 @@ ap.add_argument("-b", "--max-buffer-size", type=int, default=50000,
 args = vars(ap.parse_args())
 
 # Initialize the keypoint detector, local invariant descriptor, and the descriptor pipeline
-detector = FeatureDetector_create("SURF")
-descriptor = DescriptorExtractor_create("RootSIFT")
+detector = FeatureDetector_create("BRISK")
+descriptor = DescriptorExtractor_create("BRISK")
 dad = DetectAndDescribe(detector, descriptor)
 
 # Initialize the feature indexer
@@ -34,7 +36,7 @@ for (i, imagePath) in enumerate(sorted(paths.list_images(args["dataset"]))):
         fi._debug("processed {} images".format(i), msgType="[PROGRESS]")
 
     # Extract the image filename (i.e. the unique image ID) from the image path, then load the image itself
-    filename = imagePath[imagePath.rfind("/") + 1:]
+    filename = imagePath[imagePath.rfind("\\") + 1:]
     image = cv2.imread(imagePath)
     image = imutils.resize(image, width=320)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -51,3 +53,5 @@ for (i, imagePath) in enumerate(sorted(paths.list_images(args["dataset"]))):
 
 # Finish the indexing process
 fi.finish()
+end = time.time()
+print(end - start)

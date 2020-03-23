@@ -27,7 +27,7 @@ class Vocabulary:
         # Loop over the randomly sampled indexes and accumulate the features to cluster
         for i in idxs:
             data.append(db["features"][i][2:])
-        # Cluster the data
+        # Cluster the features
         self._debug("sampled {:,} features from a population of {:,}".format(
             len(idxs), totalFeatures))
         self._debug("clustering with k={:,}".format(numClusters))

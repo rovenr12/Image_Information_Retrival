@@ -25,25 +25,25 @@ class HDF5DatasetWriter:
 		# store the buffer size, then initialize the buffer itself
 		# along with the index into the datasets
 		self.bufSize = bufSize
-		self.buffer = {"data": [], "labels": []}
+		self.buffer = {"features": [], "labels": []}
 		self.idx = 0
 
 	def add(self, rows, labels):
 		# add the rows and labels to the buffer
-		self.buffer["data"].extend(rows)
+		self.buffer["features"].extend(rows)
 		self.buffer["labels"].extend(labels)
 
 		# check to see if the buffer needs to be flushed to disk
-		if len(self.buffer["data"]) >= self.bufSize:
+		if len(self.buffer["features"]) >= self.bufSize:
 			self.flush()
 
 	def flush(self):
 		# write the buffers to disk then reset the buffer
-		i = self.idx + len(self.buffer["data"])
-		self.data[self.idx:i] = self.buffer["data"]
+		i = self.idx + len(self.buffer["features"])
+		self.data[self.idx:i] = self.buffer["features"]
 		self.labels[self.idx:i] = self.buffer["labels"]
 		self.idx = i
-		self.buffer = {"data": [], "labels": []}
+		self.buffer = {"features": [], "labels": []}
 
 	def storeClassLabels(self, classLabels):
 		# create a dataset to store the actual class label names,
@@ -56,7 +56,7 @@ class HDF5DatasetWriter:
 	def close(self):
 		# check to see if there are any other entries in the buffer
 		# that need to be flushed to disk
-		if len(self.buffer["data"]) > 0:
+		if len(self.buffer["features"]) > 0:
 			self.flush()
 
 		# close the dataset
