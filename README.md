@@ -15,6 +15,9 @@ Requirement Package:
 2. imutils
 3. h5py
 
+Requirement Software
+Redis - Execute it by redis-cli ping
+
 
 Step 1: Extracting features by 'index_features.py'.
 Line 25, 26 can use to choose the feautres. In order to use SIFT and SURF,
